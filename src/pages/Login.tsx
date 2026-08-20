@@ -5,6 +5,8 @@ import { toast } from 'sonner';
 import {
   GraduationCapIcon,
   HandHeartIcon,
+  EyeIcon,
+  EyeOffIcon,
   Loader2Icon,
   LockIcon,
   ShieldCheckIcon } from
@@ -38,7 +40,10 @@ const roleCards: Array<{role: Role;label: string;blurb: string;icon: typeof Grad
 
 export function Login() {
   const [role, setRole] = useState<Role>('student');
+  const [email, setEmail] = useState(demoAccounts.student.email);
+  const [password, setPassword] = useState('demo-access');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { signIn } = useAuth();
   const navigate = useNavigate();
 
@@ -104,7 +109,11 @@ export function Login() {
                 name="role"
                 value={card.role}
                 checked={role === card.role}
-                onChange={() => setRole(card.role)}
+                onChange={() => {
+                  setRole(card.role);
+                  setEmail(demoAccounts[card.role].email);
+                  setPassword('demo-access');
+                }}
                 className="sr-only" />
               
                 <span
@@ -134,8 +143,8 @@ export function Login() {
             <input
               id="email"
               type="email"
-              readOnly
-              value={demoAccounts[role].email}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="mt-1.5 h-11 w-full rounded-xl border border-line bg-bg px-3.5 text-sm text-ink" />
             
           </div>
@@ -147,10 +156,18 @@ export function Login() {
               <LockIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
               <input
                 id="password"
-                type="password"
-                readOnly
-                value="demo-access"
-                className="h-11 w-full rounded-xl border border-line bg-bg pl-9 pr-3.5 text-sm text-ink" />
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="h-11 w-full rounded-xl border border-line bg-bg pl-9 pr-11 text-sm text-ink" />
+              <button
+                type="button"
+                onClick={() => setShowPassword((visible) => !visible)}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                title={showPassword ? 'Hide password' : 'Show password'}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted transition-colors hover:text-ink">
+                {showPassword ? <EyeOffIcon className="h-4 w-4" /> : <EyeIcon className="h-4 w-4" />}
+              </button>
               
             </div>
           </div>

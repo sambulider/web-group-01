@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { Toaster } from 'sonner';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
@@ -17,11 +17,22 @@ import { StudentDashboard } from './pages/dashboard/StudentDashboard';
 import { VolunteerDashboard } from './pages/dashboard/VolunteerDashboard';
 import { AdminDashboard } from './pages/dashboard/AdminDashboard';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 export function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route element={<PublicLayout />}>
               <Route path="/" element={<Home />} />
