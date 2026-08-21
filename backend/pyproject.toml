@@ -32,7 +32,6 @@ dependencies = [
     "sqlalchemy==2.0.23",
     "psycopg2-binary==2.9.9",
     "alembic==1.13.1",
-    "PyJWT==2.8.1",
     "passlib[bcrypt]==1.7.4",
     "pydantic==2.5.0",
     "pydantic-settings==2.1.0",
@@ -76,7 +75,7 @@ monitoring = [
 ]
 
 export = [
-    "openpyxl==3.11.0",
+    "openpyxl==3.1.5",
     "pandas==2.1.3",
 ]
 
