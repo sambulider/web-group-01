@@ -16,7 +16,7 @@ bcrypt==4.1.1
 cryptography==41.0.7
 
 # Data Validation
-pydantic==2.5.0
+pydantic==2.5.2
 pydantic-extra-types==2.4.1
 
 # HTTP & External Services
