@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRightIcon, CalendarCheckIcon, PlayCircleIcon } from 'lucide-react';
 import { btnGhost, btnPrimary } from '../ui/Primitives';
+import { ReededGlassHero } from '../ui/ReededGlassHero';
 import { cn } from '../../utils/cn';
 
 const EASE = [0.23, 1, 0.32, 1] as const;
@@ -16,6 +17,7 @@ export function Hero() {
 
   return (
     <section ref={ref} className="relative overflow-hidden border-b border-line bg-surface">
+      <ReededGlassHero />
       <div className="pointer-events-none absolute inset-0 grid-lines opacity-60" aria-hidden />
       <div
         className="pointer-events-none absolute -right-24 -top-24 h-[26rem] w-[26rem] rounded-full bg-primary-soft"
@@ -25,23 +27,19 @@ export function Hero() {
       <div className="relative mx-auto grid max-w-page items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-8 lg:py-24">
         <div>
           <motion.h1
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.32, ease: EASE, delay: 0.05 }}
+            transition={{ duration: 0.7, ease: EASE }}
             className="mt-6 font-display text-4xl font-extrabold leading-[1.06] tracking-tight text-ink sm:text-5xl lg:text-6xl">
-            
-            Learning, technology and opportunity — free for every young person in Batticaloa.
+            Your Future Evolves Here.
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.32, ease: EASE, delay: 0.1 }}
+            transition={{ duration: 0.65, ease: EASE, delay: 0.18 }}
             className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            
-            Digital literacy, leadership, entrepreneurship and career programmes delivered from the
-            Eastern University library complex — with an open library, study space and high-speed
-            internet for all members.
+            A space to learn without limits, build world-class skills, and discover what’s possible.
           </motion.p>
 
           <motion.div

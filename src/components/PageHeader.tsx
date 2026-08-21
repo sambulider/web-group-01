@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ReededGlassHero } from './ui/ReededGlassHero';
 
 interface PageHeaderProps {
   eyebrow: string;
@@ -9,8 +10,9 @@ interface PageHeaderProps {
 
 export function PageHeader({ eyebrow, title, intro }: PageHeaderProps) {
   return (
-    <section className="relative overflow-hidden border-b border-line bg-surface">
-      <div className="pointer-events-none absolute inset-0 grid-lines opacity-60" aria-hidden />
+    <section className="hero-frame relative overflow-hidden border-b border-line bg-surface">
+      <ReededGlassHero />
+      <div className="pointer-events-none absolute inset-0 grid-lines opacity-40" aria-hidden />
       <div className="relative mx-auto max-w-page px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <motion.p
           initial={{ opacity: 0, y: 8 }}
